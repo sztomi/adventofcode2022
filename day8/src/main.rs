@@ -1,13 +1,7 @@
 use std::collections::HashSet;
-use std::ops;
 
-use common::{get_lines, Result};
+use common::{get_lines, Result, Point, Dir};
 use itertools::Itertools;
-
-#[derive(Debug, Clone, Copy)]
-struct Point(i64, i64);
-#[derive(Debug, Clone, Copy)]
-struct Dir(i64, i64);
 
 struct Line<'a> {
   map: &'a Vec<Vec<i64>>,
@@ -33,21 +27,6 @@ impl Iterator for Line<'_> {
     let res = self.map[self.point.0 as usize][self.point.1 as usize];
     self.point += self.dir;
     Some(res)
-  }
-}
-
-impl ops::AddAssign<Dir> for Point {
-  fn add_assign(&mut self, rhs: Dir) {
-    self.0 += rhs.0;
-    self.1 += rhs.1;
-  }
-}
-
-impl ops::Add<Dir> for Point {
-  type Output = Point;
-
-  fn add(self, rhs: Dir) -> Self::Output {
-    Point(self.0 + rhs.0, self.1 + rhs.1)
   }
 }
 
