@@ -1,10 +1,10 @@
 [package]
-name = "common"
+name = "day9"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-impl_ops = "0.1.1"
+common = { path = "../common" }
 itertools = "0.10.5"
